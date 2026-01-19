@@ -45,6 +45,7 @@ cd backend
 source venv/Scripts/activate  # Windows
 pip install -r requirements.txt
 python manage.py migrate
+python manage.py seed_data # Seed data into SQLite DB
 python manage.py index_data   # Index data into ChromaDB
 python manage.py runserver
 
