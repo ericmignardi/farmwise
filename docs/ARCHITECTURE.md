@@ -136,9 +136,10 @@ sequenceDiagram
 
 ### Components
 
-| Component    | File              | Purpose                             |
-| ------------ | ----------------- | ----------------------------------- |
-| LLM          | `services/llm.py` | Google Gemini (gemini-flash-latest) |
-| RAG Chain    | `services/rag.py` | LCEL chain with retriever + prompt  |
-| Vector Store | `chroma_db/`      | ChromaDB with Google embeddings     |
-| Frontend     | `ChatView.vue`    | Chat UI with markdown rendering     |
+| Component    | File              | Purpose                                |
+| ------------ | ----------------- | -------------------------------------- |
+| LLM          | `services/llm.py` | Google Gemini 2.0 Flash                |
+| RAG Chain    | `services/rag.py` | LCEL chain with retriever + prompt     |
+| Embeddings   | `services/rag.py` | HuggingFace `all-MiniLM-L6-v2` (local) |
+| Vector Store | `chroma_db/`      | ChromaDB                               |
+| Frontend     | `ChatView.vue`    | Chat UI with markdown rendering        |
