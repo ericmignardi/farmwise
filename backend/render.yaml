@@ -2,6 +2,7 @@ services:
   - type: web
     name: farmwise-api
     runtime: python
+    rootDir: backend
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn config.wsgi:application
     envVars:
