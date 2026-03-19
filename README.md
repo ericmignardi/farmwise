@@ -1,79 +1,87 @@
 # FarmWise 🌾
 
-> Full-stack AgTech application featuring a RAG-powered AI assistant using LangChain, ChromaDB, and Google Gemini. Built with Django REST Framework (Python) and Vue.js (TypeScript).
-
-## Tech Stack
-
-| Layer            | Technology                             |
-| ---------------- | -------------------------------------- |
-| **Backend**      | Django 5.1 + Django REST Framework     |
-| **Frontend**     | Vue.js 3 + TypeScript + Tailwind CSS   |
-| **LLM**          | Google Gemini 2.0 Flash                |
-| **Embeddings**   | HuggingFace `all-MiniLM-L6-v2` (local) |
-| **Vector DB**    | ChromaDB                               |
-| **AI Framework** | LangChain (LCEL)                       |
-
-## Features
-
-- 📊 **Farm Dashboard** — KPIs for farms, crops, assets, and wealth tracking
-- 🤖 **AI Chat Assistant** — RAG-powered Q&A using your farm data
-- 🔍 **Semantic Search** — Vector similarity search over indexed farm records
-
-## API Endpoints
-
-| Method | Endpoint           | Description         |
-| ------ | ------------------ | ------------------- |
-| `GET`  | `/api/farms/`      | List all farms      |
-| `GET`  | `/api/farms/<id>/` | Get farm details    |
-| `GET`  | `/api/crops/`      | List all crops      |
-| `GET`  | `/api/assets/`     | List all assets     |
-| `GET`  | `/api/wealth/`     | List wealth records |
-| `POST` | `/api/chat/`       | AI chat (RAG)       |
-
-## Data Models
-
-- **Farm** — name, location, owner, total acreage
-- **Crop** — name, planted/harvest dates, expected yield, current value
-- **Asset** — equipment, land, livestock, buildings, vehicles
-- **WealthRecord** — daily snapshot of farm value
-
-## Quick Start
-
-```bash
-# Backend
-cd backend
-source venv/Scripts/activate  # Windows
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py seed_data # Seed data into SQLite DB
-python manage.py index_data   # Index data into ChromaDB
-python manage.py runserver
-
-# Frontend
-cd frontend
-npm install
-npm run dev
-```
-
-## Environment Variables
-
-```env
-GOOGLE_API_KEY=your_gemini_api_key
-```
-
-## Architecture
-
-See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for detailed diagrams.
+A full-stack AgTech application featuring a RAG-powered AI assistant and real-time dashboard. Manage your farm’s assets, crops, and wealth with a semantic-search-enabled interface.
 
 ---
 
-## Skills Demonstrated
+## Features
 
-| Skill                  | Evidence                           |
-| ---------------------- | ---------------------------------- |
-| Full-Stack Development | Django backend + Vue.js frontend   |
-| REST API Design        | DRF with proper serializers        |
-| LangChain/RAG          | Vector search + LLM integration    |
-| Modern LLM Integration | Gemini 2.0 Flash, local embeddings |
-| Vector Databases       | ChromaDB for semantic search       |
-| TypeScript             | Frontend with type safety          |
+- **Farm Dashboard**: Visualize KPIs for farms, crops, assets, and wealth tracking in a unified interface.
+- **AI Chat Assistant**: RAG-powered Q&A interface that lets you chat with your farm data using Google Gemini.
+- **Semantic Search**: Vector similarity search over indexed farm records for fast, context-aware information retrieval.
+- **Wealth Tracking**: Snapshot-based tracking of farm valuations and asset performance over time.
+
+## Tech Stack
+
+- **Python 3.12+ (Django / DRF)**: Robust backend API architecture.
+- **Vue.js 3 / TypeScript**: Modern, type-safe frontend with a responsive UI.
+- **LangChain (Python)**: Orchestrating the RAG (Retrieval-Augmented Generation) pipeline.
+- **Google Gemini 2.0 Flash**: State-of-the-art LLM for natural language processing.
+- **ChromaDB**: High-performance vector database for semantic search and storage.
+- **Tailwind CSS**: Utility-first styling for a premium, clean design.
+
+---
+
+## Installation & Setup
+
+**Prerequisites:**
+
+- Python 3.12+
+- Node.js & npm
+- [Google API Key](https://aistudio.google.com/app/apikey) for Gemini 2.0 Flash
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/farmwise.git
+cd farmwise
+
+# Setup Backend
+cd backend
+python -m venv venv
+source venv/Scripts/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+
+# Setup Frontend
+cd ../frontend
+npm install
+```
+
+## Usage
+
+*Note: Ensure your `GOOGLE_API_KEY` is set in a `.env` file within the `backend/` directory.*
+
+**1. Seed and Index Data:**
+
+```bash
+# Seed the SQLite database with sample farm data
+python manage.py seed_data
+
+# Index the data into ChromaDB for semantic search
+python manage.py index_data
+```
+
+**2. Start the Backend Server:**
+
+```bash
+python manage.py runserver
+```
+
+**3. Launch the Frontend Development Server:**
+
+```bash
+cd frontend
+npm run dev
+```
+
+---
+
+## Things Learned
+
+Throughout the development of FarmWise, several core AgTech and AI concepts were explored:
+
+- **RAG Architecture**: Implementing Retrieval-Augmented Generation to ground LLM responses in proprietary data.
+- **Vector Embeddings**: Leveraging HuggingFace's `all-MiniLM-L6-v2` for local, high-speed semantic indexing.
+- **Full-Stack Orchestration**: Integrating asynchronous AI workflows between a Django REST API and a Vue.js frontend.
+- **Semantic Data Modeling**: Designing data structures that bridge traditional relational databases (SQLite) and vector stores (ChromaDB).
+- **Modern AI Integration**: Utilizing LangChain (LCEL) to build modular, extensible AI agent pipelines.
+
